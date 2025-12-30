@@ -11,7 +11,6 @@ import { categoryStore } from './store/store';
 function App() {
   const getCategories = categoryStore((s) => s.getCategories);
   const isLoading = categoryStore((s) => s.isLoading);
-  const error = categoryStore((s) => s.error);
 
   useEffect(() => {
     getCategories();
@@ -20,10 +19,6 @@ function App() {
 
   if (isLoading) {  
     return <div className="lds-ring"><div></div><div></div><div></div><div></div></div>;
-  }
-
-  if (error) {
-    return <div className="loader-wrapper">Ошибка: {error}</div>;
   }
 
   return (
